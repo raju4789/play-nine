@@ -14,4 +14,5 @@ And you can always click Play Again to reset everything about this game and play
 # FEW SCREEN SHOTS
 
 ![image.png](images/play_nine_1.png)<br><br>
+![image.png](images/play_nine_3.png)<br><br>
 ![image.png](images/play_nine_2.png)<br><br>
