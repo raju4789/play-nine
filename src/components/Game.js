@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { UTILS } from './util';
+import { UTILS } from '../util';
 
 import PlayNumber from './PlayNumber';
 import DisplayStars from './DisplayStars';
@@ -34,11 +34,18 @@ const useGameState = () => {
         }
     };
 
-    return { stars, availableNums, candidateNums, secondsLeft, setGameState };
+    const resetGame = () => {
+        setStars(UTILS.random(1, 9));
+        setAvailableNums(UTILS.range(1, 9));
+        setCandidateNums([]);
+        setSecondsLeft(10);
+    };
+
+    return { stars, availableNums, candidateNums, secondsLeft, setGameState, resetGame };
 };
 
 const Game = (props) => {
-    const { stars, availableNums, candidateNums, secondsLeft, setGameState } = useGameState();
+    const { stars, availableNums, candidateNums, secondsLeft, setGameState, resetGame } = useGameState();
 
     const areCandidatesWrong = () => {
         return UTILS.sum(candidateNums) > stars;
@@ -47,12 +54,7 @@ const Game = (props) => {
     const gameStatus = (availableNums.length === 0) ? 'won' :
         (secondsLeft === 0) ? 'lost' : 'active';
 
-    /*const resetGame = () => {
-        setStars(UTILS.random(1,9));
-        setAvailableNums(UTILS.range(1,9));
-        setCandidateNums([]);
-        setSecondsLeft(10);
-    };*/
+
 
     const numberStatus = (number) => {
 
@@ -86,7 +88,7 @@ const Game = (props) => {
             <div className="body">
                 <div className="left">
                     {
-                        (gameStatus !== 'active') ? <PlayAgain onPlayAgainClick={props.startNewGame} gameStatus={gameStatus} /> : <DisplayStars stars={stars} />
+                        (gameStatus !== 'active') ? <PlayAgain onPlayAgainClick={resetGame} gameStatus={gameStatus} /> : <DisplayStars stars={stars} />
                     }
                 </div>
                 <div className="right">

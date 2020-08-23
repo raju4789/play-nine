@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
 import Game from './Game';
-import { UTILS } from "./util.js";
+import { UTILS } from "../util";
 
 const StarMatch = () => {
-    const [gameId, setGameId] = useState(UTILS.random(1, 9));
+    const [gameId, setGameId] = useState(1);
     return <Game key={gameId} startNewGame={() => setGameId(gameId + 1)} />
 };
 

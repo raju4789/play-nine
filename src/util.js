@@ -34,4 +34,4 @@ const COLORS = {
     candidate: 'deepskyblue',
 };
 
-export  { UTILS, COLORS };
+export { UTILS, COLORS };

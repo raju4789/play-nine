@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import StarMatch from './components/Game';
 import './App.css';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { UTILS } from "./util.js";
+import { UTILS } from "../util.js";
 
 const DisplayStars = (props) => (
     <>
