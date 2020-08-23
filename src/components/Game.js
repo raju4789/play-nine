@@ -1,61 +1,32 @@
-import React, { useState, useEffect }from 'react';
-import {UTILS, COLORS }from "./Util.js";
-import "./Game.css";
+import React, { useState, useEffect } from 'react';
 
-const PlayNumber = props => {
-    console.log(COLORS[props.status]);
-    return <button
-        className="number"
-        style={{backgroundColor: COLORS[props.status]}}
-        onClick={ () => props.onNumberClick(props.id, props.status)}
-    >
-        {props.id}
-    </button>
-};
+import { UTILS } from './util';
 
-const DisplayStars = (props) => (
-    <>
-        {
-            UTILS.range(1, props.stars).map(starId =>
-                <div key={starId} className="star" />
-            )
-        }
-    </>
-);
-
-const PlayAgain = (props) => (
-    <div className="game-done">
-        <div
-            className="message"
-            style={{ color: props.gameStatus === 'lost' ? 'red' : 'green'}}
-        >
-            {(props.gameStatus === 'lost') ? 'Game Over' : 'Nicely Done'}
-        </div>
-        <button onClick={props.onPlayAgainClick}> Play Again </button>
-    </div>
-);
+import PlayNumber from './PlayNumber';
+import DisplayStars from './DisplayStars';
+import PlayAgain from './PlayAgain';
 
 // custom hook
 const useGameState = () => {
-    const [stars, setStars]= useState(UTILS.random(1,9));
-    const [availableNums, setAvailableNums] = useState(UTILS.range(1,9));
+    const [stars, setStars] = useState(UTILS.random(1, 9));
+    const [availableNums, setAvailableNums] = useState(UTILS.range(1, 9));
     const [candidateNums, setCandidateNums] = useState([]);
     const [secondsLeft, setSecondsLeft] = useState(10);
 
     useEffect(() => {
-        if(secondsLeft > 0 && availableNums.length > 0){
-            const timerId = setTimeout(() =>{
-                setSecondsLeft(secondsLeft-1);
-            },1000);
+        if (secondsLeft > 0 && availableNums.length > 0) {
+            const timerId = setTimeout(() => {
+                setSecondsLeft(secondsLeft - 1);
+            }, 1000);
 
             return () => clearTimeout(timerId);
         }
     });
 
     const setGameState = (newCandidateNums) => {
-        if(UTILS.sum(newCandidateNums) !== stars){
+        if (UTILS.sum(newCandidateNums) !== stars) {
             setCandidateNums(newCandidateNums);
-        }else{
+        } else {
             let newAvailableNums = availableNums.filter(num => !newCandidateNums.includes(num));
             setAvailableNums(newAvailableNums);
             setCandidateNums([]);
@@ -63,11 +34,11 @@ const useGameState = () => {
         }
     };
 
-    return {stars, availableNums, candidateNums, secondsLeft, setGameState};
+    return { stars, availableNums, candidateNums, secondsLeft, setGameState };
 };
 
 const Game = (props) => {
-    const {stars, availableNums, candidateNums, secondsLeft, setGameState} = useGameState();
+    const { stars, availableNums, candidateNums, secondsLeft, setGameState } = useGameState();
 
     const areCandidatesWrong = () => {
         return UTILS.sum(candidateNums) > stars;
@@ -85,11 +56,11 @@ const Game = (props) => {
 
     const numberStatus = (number) => {
 
-        if(!availableNums.includes(number)){
+        if (!availableNums.includes(number)) {
             return 'used';
         }
 
-        if(candidateNums.includes(number)){
+        if (candidateNums.includes(number)) {
             return areCandidatesWrong() ? 'wrong' : 'candidate';
         }
 
@@ -97,7 +68,7 @@ const Game = (props) => {
     };
 
     const onNumberClick = (number, currentStatus) => {
-        if(currentStatus === 'used' || gameStatus !== 'active'){
+        if (currentStatus === 'used' || gameStatus !== 'active') {
             return;
         }
         let newCandidateNums = (currentStatus === 'available') ?
@@ -115,7 +86,7 @@ const Game = (props) => {
             <div className="body">
                 <div className="left">
                     {
-                        (gameStatus !== 'active') ? <PlayAgain onPlayAgainClick={props.startNewGame} gameStatus={gameStatus}/> : <DisplayStars stars={stars}/>
+                        (gameStatus !== 'active') ? <PlayAgain onPlayAgainClick={props.startNewGame} gameStatus={gameStatus} /> : <DisplayStars stars={stars} />
                     }
                 </div>
                 <div className="right">
@@ -136,11 +107,5 @@ const Game = (props) => {
     );
 };
 
-const StarMatch = () => {
-    const [gameId, setGameId]= useState(UTILS.random(1,9));
-    return <Game key={gameId} startNewGame={() => setGameId(gameId+1)}/>
-};
+export default Game;
 
-
-
-export default StarMatch;
