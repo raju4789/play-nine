@@ -1,6 +1,8 @@
 # PLAY NINE
 This in‑browser game using ReactJS. 
 
+__Try me__: https://play-nine.herokuapp.com/
+
 # HOW TO PLAY?
 It's a simple math skills game for kids.
 
