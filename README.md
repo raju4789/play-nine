@@ -1,5 +1,5 @@
 # PLAY NINE
-This is an in‑browser game using React Hooks. 
+This is an in‑browser game built using React Hooks. 
 
 __Try me__: https://play-nine.herokuapp.com/
 
