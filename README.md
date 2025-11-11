@@ -1,24 +1,82 @@
-# PLAY NINE
-This is an in‑browser game built using React Hooks. 
+# Play Nine
 
-__Try me__: https://play-nine.herokuapp.com/
+A fast-paced mental-math game built with modern React. Match the number of stars by selecting one or more digits before the timer runs out, clear the board to win, and chase the best remaining-time score.
 
-# HOW TO PLAY?
-It's a simple math skills game for kids.
+## Features
+- React 18 + hooks implementation packaged with Create React App.
+- Dynamic star target generation that always guarantees a playable move.
+- Visual feedback for available, candidate, wrong, and used numbers.
+- Countdown timer, per-round score, and persistent high-score tracking.
+- Instant replay support to jump back into a new round.
 
-When it starts, the player gets a random number of stars between 1 and 9 and also the fixed set of numbers from 1 to 9. The goal is to use all nine numbers. 
+## Gameplay
+1. Nine numbers (1–9) are available along the right.
+2. Match the number of stars shown on the left by selecting one or more numbers whose sum equals the star count.
+3. Correct picks become “used” and are removed from future rounds; over-shooting the sum turns numbers red so you can adjust.
+4. Finish before the 10 second timer hits zero to win. Remaining time becomes your score and updates the high score when you set a new record.
 
-For each random number of stars, the player needs to pick one or more numbers that sum to the number of stars. So for 2, I can pick 2. For 4 stars, I have 2 options. I can either pick 4 or I can pick 3 plus 1. For 9, I have 2 options here as well. I can either pick 9 directly or 4 plus 5. Now while the player is picking numbers, they get marked as candidates because it's not a complete answer. And if they pick more than the count of stars, numbers get marked as wrong, and the player can unpick these candidates or wrong numbers to be able to pick a correct sum. And the game will always draw a number of stars that is playable. 
+![Game board showing available numbers and star target](images/play_nine_1.png)
 
-We have timer that starts when game starts. If the timer runs out and you're not done picking all the numbers, the game is over. 
-And you can always click __Play Again__ to reset everything about this game and play again.
+![End-of-game success state](images/play_nine_3.png)
 
-# FEW SCREEN SHOTS
+![Game over screen](images/play_nine_2.png)
 
-![image.png](images/play_nine_1.png)<br><br>
-![image.png](images/play_nine_3.png)<br><br>
-![image.png](images/play_nine_2.png)<br><br>
+## Tech Stack
+- React 18
+- Create React App (`react-scripts`)
+- Font Awesome icons
+- Lodash utilities
 
-# COMING SOON
+## Getting Started
 
-Adding leader board.
+### Prerequisites
+- Node.js 18 or newer (tested on Node 22)
+- npm 8+
+
+### Installation
+```bash
+git clone https://github.com/raju4789/play-nine.git
+cd play-nine
+npm install
+```
+
+### Local development
+```bash
+npm start
+```
+The app runs at `http://localhost:3000/`. If port 3000 is taken, you can set a custom port: `PORT=4000 npm start`.
+
+### Tests
+```bash
+npm test -- --watchAll=false
+```
+
+### Production build
+```bash
+npm run build
+```
+Outputs an optimized bundle in the `build/` directory.
+
+## Deployment
+
+This project is prepped for GitHub Pages via the `gh-pages` package.
+
+1. Update the `homepage` field in `package.json` (already set to `https://raju4789.github.io/play-nine/`).
+2. Deploy with:
+   ```bash
+   npm run deploy
+   ```
+3. Enable GitHub Pages on the `gh-pages` branch in the repository settings.
+
+For detailed instructions, optional automation, and tips on deploying multiple apps, see [`DEPLOYMENT.md`](DEPLOYMENT.md).
+
+## Roadmap
+- Leaderboard with historic scores.
+- Difficulty settings (longer timer, additional numbers).
+- Progressive web app enhancements.
+
+## Contributing
+Pull requests and feature ideas are welcome. Please open an issue to discuss substantial changes or roadmap items before submitting a PR.
+
+## License
+No explicit license is provided. If you plan to use this project beyond personal experimentation, please contact the author.
