@@ -1,7 +1,5 @@
 # Play Nine
 
-👉 [Try now](https://raju4789.github.io/play-nine/)
-
 A fast-paced mental-math game built with modern React. Match the number of stars by selecting one or more digits before the timer runs out, clear the board to win, and chase the best remaining-time score.
 
 ## Features
@@ -13,7 +11,6 @@ A fast-paced mental-math game built with modern React. Match the number of stars
 
 ## Gameplay
 
-[Read the full game rules](GAME_RULES.md)
 1. Nine numbers (1–9) are available along the right.
 2. Match the number of stars shown on the left by selecting one or more numbers whose sum equals the star count.
 3. Correct picks become “used” and are removed from future rounds; over-shooting the sum turns numbers red so you can adjust.
@@ -25,9 +22,10 @@ A fast-paced mental-math game built with modern React. Match the number of stars
 
 ![Game over screen](images/play_nine_2.png)
 
+👉 [Try now](https://raju4789.github.io/play-nine/)
+
 ## Tech Stack
 - React 18
-- Create React App (`react-scripts`)
 - Font Awesome icons
 - Lodash utilities
 
