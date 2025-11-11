@@ -1,8 +1,6 @@
 # Play Nine
 
-## 🔗 Play Now
-
-[![Play Play Nine](https://img.shields.io/badge/Play%20Now-GitHub%20Pages-brightgreen?style=for-the-badge&logo=github)](https://raju4789.github.io/play-nine/)
+👉 [Play Nine on GitHub Pages](https://raju4789.github.io/play-nine/)
 
 A fast-paced mental-math game built with modern React. Match the number of stars by selecting one or more digits before the timer runs out, clear the board to win, and chase the best remaining-time score.
 
